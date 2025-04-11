@@ -1,0 +1,54 @@
+@startuml viatges.png
+
+hide circle
+hide empty members
+
+class User {
+        +id: int
+        name: string
+        email: string
+        password: string
+    }
+
+
+    class Viatge {
+        +id: int
+        nomViatge: string
+        descripcio: text
+        dataInici: date
+        dataFi: date
+        completat: boolean
+        +usuari_id: int
+    }
+            class Calificacio {
+        +id: int
+        puntuacio: int
+        comentari: text
+        completat: boolean
+        +itinerari_id: int
+    }
+
+
+    Class Itinerari {
+        +id: int
+        foto: string
+        nomItinerari: string
+        descripcio: text
+        latitud: string
+        longitud: string
+        completat: boolean
+        transport: string
+        durada: string
+        visites: int
+        +viatge_id: int
+    }
+
+
+
+User --{ Viatge
+User --{ Calificacio
+Itinerari --{ Calificacio
+Viatge --{ Itinerari
+
+
+@enduml
